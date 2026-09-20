@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Flores Amarillas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<canvas id="dust-canvas"></canvas>
+
+<div class="gate" id="gate">
+  <div class="gate-inner">
+    <div class="gate-moon"></div>
+    <h2>Liz, ¿quieres abrir tus flores?</h2>
+    <div class="gate-buttons">
+      <button type="button" id="gate-yes" class="gate-yes">Sí, ábrelas</button>
+      <button type="button" id="gate-no" class="gate-no">No</button>
+    </div>
+    <p class="gate-hint" id="gate-hint" hidden></p>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="night-card">
+    <div class="stars"></div>
+    <div class="moon"></div>
+    <div class="shooting-star"></div>
+
+    <h1 class="night-title">Feliz día de las<br>flores amarillas,<br>Liz</h1>
+    <p class="night-sub">21 de setiembre</p>
+
+    <div class="scene-wrap">
+      <svg class="flower-scene" viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="petalG" cx="35%" cy="20%" r="85%">
+            <stop offset="0%" stop-color="#fff6b0" />
+            <stop offset="55%" stop-color="#f4e23f" />
+            <stop offset="100%" stop-color="#d8bf1e" />
+          </radialGradient>
+          <linearGradient id="stemG" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#8a6a3e" />
+            <stop offset="100%" stop-color="#5c4526" />
+          </linearGradient>
+          <linearGradient id="leafG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7fa04a" />
+            <stop offset="100%" stop-color="#3d5c2c" />
+          </linearGradient>
+          <radialGradient id="bushHi" cx="50%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#4d6c3a" stop-opacity="0.55" />
+            <stop offset="100%" stop-color="#4d6c3a" stop-opacity="0" />
+          </radialGradient>
+
+          <g id="tulip-flower">
+            <path d="M-22,-10 C-27,-30 -18,-42 -10,-32 C-7,-44 7,-44 10,-32 C18,-42 27,-30 22,-10 C22,4 12,11 0,11 C-12,11 -22,4 -22,-10 Z" fill="url(#petalG)" stroke="#c9a824" stroke-width="0.6" />
+            <path d="M-3,-33 C-4,-20 -3,-4 -1,7 L3,7 C2,-4 3,-20 3,-33 Z" fill="#fffce0" opacity="0.75" />
+          </g>
+
+          <g id="blade">
+            <path d="M0,90 C-10,55 -6,20 0,0 C6,20 10,55 0,90 Z" fill="#1c3a20" />
+          </g>
+
+          <g id="leaf">
+            <path d="M0,0 C 12,-5 24,-3 30,7 C 24,15 8,15 0,0 Z" fill="url(#leafG)" />
+          </g>
+        </defs>
+
+        <!-- back grass blades -->
+        <g opacity="0.9">
+          <use href="#blade" transform="translate(28,180) scale(0.5) rotate(-16)" />
+          <use href="#blade" transform="translate(44,178) scale(0.65) rotate(-6)" />
+          <use href="#blade" transform="translate(362,178) scale(0.6) rotate(10)" />
+          <use href="#blade" transform="translate(378,180) scale(0.48) rotate(18)" />
+        </g>
+
+        <!-- stems -->
+        <path d="M130 205 C 128 170, 130 140, 132 118" stroke="url(#stemG)" stroke-width="4" fill="none" stroke-linecap="round" />
+        <path d="M168 205 C 167 160, 169 120, 170 92" stroke="url(#stemG)" stroke-width="4.5" fill="none" stroke-linecap="round" />
+        <path d="M205 205 C 203 155, 205 100, 205 68" stroke="url(#stemG)" stroke-width="5" fill="none" stroke-linecap="round" />
+        <path d="M242 205 C 241 160, 243 120, 244 92" stroke="url(#stemG)" stroke-width="4.5" fill="none" stroke-linecap="round" />
+        <path d="M278 205 C 276 170, 278 140, 280 118" stroke="url(#stemG)" stroke-width="4" fill="none" stroke-linecap="round" />
+
+        <!-- stem leaves -->
+        <g transform="translate(112,168) rotate(-150) scale(0.85)"><use href="#leaf" /></g>
+        <g transform="translate(178,145) rotate(20) scale(0.95)"><use href="#leaf" /></g>
+        <g transform="translate(196,128) rotate(-155) scale(0.95)"><use href="#leaf" /></g>
+        <g transform="translate(258,145) rotate(-160) scale(0.9)"><use href="#leaf" /></g>
+        <g transform="translate(296,168) rotate(30) scale(0.85)"><use href="#leaf" /></g>
+
+        <!-- bushy foliage base -->
+        <g opacity="0.95">
+          <circle cx="150" cy="205" r="34" fill="var(--leaf-dark)" />
+          <circle cx="190" cy="198" r="40" fill="var(--leaf-mid)" />
+          <circle cx="230" cy="200" r="38" fill="var(--leaf-dark)" />
+          <circle cx="260" cy="208" r="30" fill="var(--leaf-mid)" />
+          <circle cx="172" cy="188" r="30" fill="url(#bushHi)" />
+          <circle cx="222" cy="184" r="32" fill="url(#bushHi)" />
+        </g>
+
+        <!-- front grass blades -->
+        <use href="#blade" transform="translate(60,182) scale(0.7) rotate(-10)" />
+        <use href="#blade" transform="translate(348,182) scale(0.7) rotate(12)" />
+
+        <!-- tulips -->
+        <g transform="translate(130,118)"><g class="tulip t4"><use href="#tulip-flower" /></g></g>
+        <g transform="translate(168,92)"><g class="tulip t2"><use href="#tulip-flower" /></g></g>
+        <g transform="translate(205,68)"><g class="tulip"><use href="#tulip-flower" /></g></g>
+        <g transform="translate(242,92)"><g class="tulip t3"><use href="#tulip-flower" /></g></g>
+        <g transform="translate(278,118)"><g class="tulip t5"><use href="#tulip-flower" /></g></g>
+
+        <!-- fireflies -->
+        <circle class="firefly f1" cx="95" cy="150" r="2.4" />
+        <circle class="firefly f2" cx="320" cy="140" r="2" />
+        <circle class="firefly f3" cx="150" cy="90" r="1.8" />
+        <circle class="firefly f4" cx="260" cy="70" r="2.2" />
+        <circle class="firefly f5" cx="215" cy="150" r="1.8" />
+      </svg>
+    </div>
+  </section>
+
+  <p class="intro">"El 21 de setiembre no se regala cualquier flor: se regala una amarilla, color de sol, de año nuevo y de gente que quieres cerca."</p>
+
+  <footer>hecho con flores amarillas, para que tengas un año bonito, Liz ✿</footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
